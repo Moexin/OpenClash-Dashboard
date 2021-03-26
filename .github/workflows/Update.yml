@@ -1,0 +1,23 @@
+name: Update
+
+on:
+  push:
+  schedule:
+    - cron: 0 20 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Step 1 - Checkout
+      uses: actions/checkout@v2
+    - name: Step 2 - Build
+      run: |
+        wget https://github.com/haishanh/yacd/archive/gh-pages.zip
+        unzip gh-pages.zip
+        rm -f gh-pages.zip
+        mv yacd-gh-pages/* ./
+    - name: Step 3 - Release
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Update
