@@ -1,0 +1,2 @@
+# OpenClash-Dashboard
+OpenClash Dashboard
